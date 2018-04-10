@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script >
+	
+	var script = document.createElement("script");
+	
+	script.src = "http://127.0.0.1:8888?type=kafei&callback=jsonpCallback";
+	
+	document.head.appendChild(script);
+	
+	
+	function  jsonpCallback(resp){
+		
+		alert( JSON.stringify(resp)  );
+		
+		
+	}
+	
+	
+	
+</script>

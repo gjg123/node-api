@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width:100px;
+				height:30px;
+				border:1px solid red;
+				margin:200px 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>我是首页</div>
+	</body>
+</html>
+<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script >
+	
+	function ajaxPost(){
+		//创建 XMLHttpRequest 对象
+	    var ajax = new XMLHttpRequest();
+	    /*
+	    *ajax.open('POST',url,true);
+	    *POST规定请求的类型、URL 以及是否异步处理请求。
+	    *url 接口地址
+	    *true  true是异步请求  false是同步请求
+	    */
+	    ajax.open('POST',"http://127.0.0.1:8989",true);
+	    //设置传输数据格式  这样会把send传输的字符串自动转换为对象
+	    ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	    //发送请求 send里面只能传post请求参数
+	    ajax.send("username=杨老湿&pwd=123456");  
+	    //接受服务器响应数据
+	    ajax.onreadystatechange = function () {
+	    	
+	    	//ajax.readyState监控请求状态 4请求已完成，且响应已就绪
+	    	if(ajax.readyState == 4){
+	            //ajax.responseText 获得字符串形式的响应数据。
+	            var data =JSON.parse(ajax.responseText);
+	    	//	alert(data.message);
+	    		console.log(data)
+	    	}
+	    };
+	}
+    $("div").click(function(){
+    	ajaxPost()
+    })
+    
+	
+	
+</script>  
